@@ -1,5 +1,5 @@
 RSpec.describe 'GET /api/articles', type: :request do
-    let!(:articles){create_list(:article, 5)}
+  let!(:articles) { create_list(:article, 5) }
   before do
     get '/api/articles'
   end
