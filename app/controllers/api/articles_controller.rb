@@ -1,6 +1,5 @@
 class Api::ArticlesController < ApplicationController
   def index
-    # binding.pry
     articles = Article.all
     render json: { articles: articles }
   end
@@ -11,10 +10,11 @@ class Api::ArticlesController < ApplicationController
   end
 
   def create
-    new_article = Article.new
-    new_article.body = params[:article][:title]
-    new_article.body = params[:article][:body]
-    new_article.save
+    new_article = Article.create(params[:article].permit!)
+    # new_article = Article.new
+    # new_article.title = params[:article][:title]
+    # new_article.body = params[:article][:body]
+    # new_article.save
     render json: { article: new_article }, status: 201
   end
 end
