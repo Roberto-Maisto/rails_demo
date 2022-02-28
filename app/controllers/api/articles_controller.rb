@@ -1,4 +1,5 @@
 class Api::ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
   def index
     articles = Article.all
     render json: { articles: articles }
@@ -10,11 +11,10 @@ class Api::ArticlesController < ApplicationController
   end
 
   def create
-    new_article = Article.create(article_params)
-   
-    render json: { article: new_article }, status: 201
+    article = Article.create(article_params)
+    render json: { article: article }, status: 201
   end
-  
+
   private
 
   def article_params
