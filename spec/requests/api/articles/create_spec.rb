@@ -6,7 +6,7 @@ RSpec.describe 'POST /api/articles' do
     let(:credentials) { user.create_new_auth_token }
     before do
       post '/api/articles', params: {
-        article: { title: 'News about coding', body: 'Lorem ipsum...' }
+        article: { title: 'News about coding', body: 'Lorem ipsum...', image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0oAAAJHCAYAAACu' }
       }, headers: credentials
 
       @article = Article.last
@@ -24,6 +24,14 @@ RSpec.describe 'POST /api/articles' do
 
     it 'is expected to to have a body' do
       expect(@article.body).to eq 'Lorem ipsum...'
+    end
+
+    it 'is expected to attach an image to the new article' do
+      expect(@article.image.attached).to eq true
+    end
+
+    it 'is expected to attach an image to the new article' do
+      expect(@article.image).to be_attached
     end
   end
 
