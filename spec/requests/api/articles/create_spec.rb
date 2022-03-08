@@ -27,7 +27,7 @@ RSpec.describe 'POST /api/articles' do
     end
 
     it 'is expected to attach an image to the new article' do
-      expect(@article.image.attached).to eq true
+      expect(@article.image.attached?).to eq true
     end
 
     it 'is expected to attach an image to the new article' do
