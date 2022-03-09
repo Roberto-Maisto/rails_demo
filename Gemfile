@@ -9,6 +9,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'aws-sdk-s3'
 
 gem 'rack-cors'
 
